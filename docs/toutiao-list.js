@@ -123,6 +123,7 @@
                 sections.forEach(i => {
                     let h = window.getComputedStyle(i).height
                     h = parseInt(h)
+                    console.log(h);
                     y += h
                     if (y > nodeY) {
                         i.parentNode.insertBefore(s, i)
