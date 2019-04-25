@@ -76,7 +76,7 @@
             float: 'left',
             marginRight: '20px'
         })
-        card.innerHtml = `
+        card.innerHTML = `
         <a style="display: block; width: 100%; height: 100%" href="${url}">
             <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%" />
             <div style="float: left; width: 75%; height: 100%">
