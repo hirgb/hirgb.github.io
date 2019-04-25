@@ -71,7 +71,7 @@
         })
         card.innerHTML = `
         <a style="display: block; width: 100%; height: 100%" href="${url}">
-            <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%;" />
+            <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%; border: none" />
             <div style="float: left; width: 75%; height: 100%">
                 <div style="height: ${80/ratio}px; font-size: ${48/ratio}px; line-height: ${80/ratio}px; color: #fff; padding: 0 ${20/ratio}px; white-space: nowrap; text-overflow: ellipsis;">${title}</div>
                 <p style="height: calc(100% - ${80/ratio}px); font-size: ${40/ratio}px; line-height: ${50/ratio}px; color: #ffffffbb; padding: 0 ${20/ratio}px; text-overflow: ellipsis; overflow: hidden">${intro}</p>

@@ -52,7 +52,7 @@
                             ner: i.ner,
                             summary: i.person_list[0].summary,
                         }
-                    } else if (i.source = 'TRIO_SEARCH') {
+                    } else if (i.source = 'TRIO_SEARCH' && i.title) {
                         term = {
                             title: i.title,
                             url: i.url,
