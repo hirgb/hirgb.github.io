@@ -27,13 +27,20 @@
             }
         ).then(function(response) {
             response.json().then((res) => {
-                if (!res || !res.data.rtnCode) {
+                console.log(res.data);
+
+                var data123;
+                data123 = JSON.parse(res.data + '');
+                console.log(data123);
+                if (data123.rtnCode === '1') { //failed
                     window.localStorage.removeItem('terms')
                     return
                 }
-                terms = res.data.data.result_list[0].term_list
-                customInfoList = res.data.data.result_list[0].custom_info_list
-                terms = [...terms, ...customInfoList]
+                terms = data123.data.result_list[0].term_list
+                customInfoList = data123.data.result_list[0].custom_info_list
+                return
+                // terms = [...terms, ...customInfoList]
+                terms.concat(customInfoList)
                 terms.forEach((i, index) => {
                     let term
                     if (i.ner === 'FILM' && i.film_list) {
@@ -95,5 +102,5 @@
 
     let content = document.querySelector('#article_content').innerText
     // let content = document.querySelector('#imedia-article').innerText
-    getCard(content.replace(/\n/g, ''))
+    getCard(content)
 }())
