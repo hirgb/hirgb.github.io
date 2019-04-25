@@ -42,6 +42,17 @@
                             ner: i.ner,
                             inter: i.film_list[0].summary,
                         }
+                    } else if (i.ner === 'PERSON_NAME' && i.person_list) {
+                        term = {
+                            title: i.person_list[0].name,
+                            url: i.person_list[0].url,
+                            pic: i.person_list[0].display_img,
+                            ner: i.ner,
+                            inter: i.person_list[0].summary,
+                        }
+                    }
+
+                    if (term) {
                         if (index === 0) {
                             let terms = [term]
                             window.localStorage.setItem('terms', JSON.stringify(terms))
