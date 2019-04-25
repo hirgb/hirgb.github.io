@@ -33,8 +33,12 @@
                             //     }
                             // })
                             // getCard(nluTerms)
-                            terms.forEach(i => {
-                                getCard(i.token, i.ner)
+                            terms.forEach((i, index) => {
+                                if (index === 0) {
+                                    getCard(i.token, i.ner, true)
+                                } else {
+                                    getCard(i.token, i.ner)
+                                }
                             })
                         }
                     } else {

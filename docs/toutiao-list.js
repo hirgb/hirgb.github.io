@@ -79,19 +79,29 @@
         return card
     }
 
-    let s = createSectionEl()
-    let wraper = createWraperEl()
-    let card = createCardEl()
-
-    s.appendChild(wraper)
-
-    wraper.appendChild(card)
-    wraper.appendChild(card.cloneNode(true))
-    wraper.appendChild(card.cloneNode(true))
-    wraper.appendChild(card.cloneNode(true))
+    let createImg = function(src){
+        let img = document.createElement('img')
+        img.src = src
+        img.width = '300px'
+        return img
+    }
 
     document.addEventListener('touchstart', (e) => {
-        if (window.localStorage.getItem('terms')) {
+        let s = createSectionEl()
+        let wraper = createWraperEl()
+
+        let terms = window.localStorage.getItem('terms')
+        if (terms) {
+            let card = JSON.parse(terms)
+            let cardCount = card.length
+            wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
+            card.forEach(i => {
+                let img = createImg(i.pic)
+                let card = createCardEl()
+                card.appendChild(img)
+                wraper.appendChild(card)
+            })
+            s.appendChild(wraper)
             let touchNode = findTouchNode(e.path)
             if (touchNode) {
                 let targetNode = findAfterEl(touchNode)
