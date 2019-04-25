@@ -41,7 +41,7 @@
                 // return
                 // terms = [...terms, ...customInfoList]
                 terms.concat(customInfoList)
-                console.log(terms);
+                // console.log(terms);
                 terms.forEach((i, index) => {
                     let term
                     if (i.ner === 'FILM' && i.film_list) {
@@ -103,5 +103,5 @@
 
     let content = document.querySelector('#article_content').innerText
     // let content = document.querySelector('#imedia-article').innerText
-    getCard(content)
+    getCard(content.replace(/\n/g, '').slice(0, 150))
 }())
