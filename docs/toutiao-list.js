@@ -137,20 +137,21 @@
             // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '#', 'this is a test card'))
 
             if (true) {
+
+                let s = createSectionEl()
+                let wraper = createWraperEl()
+
+                wraper.appendChild(createCardEl('', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
+
                 let terms = window.localStorage.getItem('terms')
                 if (terms && JSON.parse(terms).length) {
-                    // if (true) {
-                    let s = createSectionEl()
-                    let wraper = createWraperEl()
-                    let card = JSON.parse(terms)
-                    let cardCount = card.length
+                    let cards = JSON.parse(terms)
+                    let cardCount = cards.length
                     wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
-                    wraper.appendChild(createCardEl('', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
-                    card.forEach(i => {
+                    cards.forEach(i => {
                         let card = createCardEl(i.pic, i.title, i.url, i.summary)
                         wraper.appendChild(card)
                     })
-
 
                     s.appendChild(wraper)
                     let parentNode = document.querySelector('#pageletListContent > div.list_content')
