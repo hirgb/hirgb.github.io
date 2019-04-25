@@ -178,5 +178,5 @@
                 window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText.slice(0, 10))
 
             })
-    }, 500)
+    }, 3000)
 }())
