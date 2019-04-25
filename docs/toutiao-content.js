@@ -12,7 +12,6 @@
         return true
     }
 
-
     let getCard = function(query) {
         window.fetch(`https://bridge.sanjiaoshou.net/web/term/getcardcommon`,
             {
@@ -28,10 +27,13 @@
             }
         ).then(function(response) {
             response.json().then((res) => {
-                if (!res) {
+                if (!res || !res.data.rtnCode) {
+                    window.localStorage.removeItem('terms')
                     return
                 }
                 terms = res.data.data.result_list[0].term_list
+                customInfoList = res.data.data.result_list[0].custom_info_list
+                terms = [...terms, ...customInfoList]
                 terms.forEach((i, index) => {
                     let term
                     if (i.ner === 'FILM' && i.film_list) {
@@ -40,7 +42,7 @@
                             url: i.film_list[0].url,
                             pic: i.film_list[0].posturl,
                             ner: i.ner,
-                            inter: i.film_list[0].summary,
+                            summary: i.film_list[0].summary,
                         }
                     } else if (i.ner === 'PERSON_NAME' && i.person_list) {
                         term = {
@@ -48,7 +50,15 @@
                             url: i.person_list[0].url,
                             pic: i.person_list[0].display_img,
                             ner: i.ner,
-                            inter: i.person_list[0].summary,
+                            summary: i.person_list[0].summary,
+                        }
+                    } else if (i.source = 'TRIO_SEARCH') {
+                        term = {
+                            title: i.title,
+                            url: i.url,
+                            pic: i.img_url || i.thumbUrl,
+                            ner: 'TRIO_SEARCH',
+                            summary: '',
                         }
                     }
 

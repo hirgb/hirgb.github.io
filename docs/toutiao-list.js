@@ -87,7 +87,7 @@
         let wraper = createWraperEl()
 
         let terms = window.localStorage.getItem('terms')
-        if (terms) {
+        if (terms && terms.length) {
             let card = JSON.parse(terms)
             let cardCount = card.length
             wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
