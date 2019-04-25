@@ -41,6 +41,7 @@
                 // return
                 // terms = [...terms, ...customInfoList]
                 terms.concat(customInfoList)
+                console.log(terms);
                 terms.forEach((i, index) => {
                     let term
                     if (i.ner === 'FILM' && i.film_list) {
