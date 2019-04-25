@@ -30,7 +30,7 @@
                         if (terms.length) {
                             let nluTerms = []
                             terms.forEach(i => {
-                                if (word.length > 3 || ['PERSON_NAME', 'BOOK', 'TV', 'FILM'].includes(ner)) {
+                                if (i.token.length > 3 || ['PERSON_NAME', 'BOOK', 'TV', 'FILM'].includes(i.ner)) {
                                     nluTerms.push({
                                         word: i.token,
                                         ner: i.ner,
