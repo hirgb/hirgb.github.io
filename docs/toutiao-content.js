@@ -116,7 +116,7 @@
     let t = []
     window.localStorage.setItem('terms', JSON.stringify(t))
 
-    // let content = document.querySelector('#article_content').innerText
-    let content = document.querySelector('#imedia-article').innerText
+    let content = document.querySelector('#article_content').innerText
+    // let content = document.querySelector('#imedia-article').innerText
     segment(content)
 }())

@@ -29,8 +29,8 @@
 
     let findTouchNode = function(path) {
         let result = path.find(i => {
-            // if (i.nodeName === 'SECTION') {
-            if (i.nodeName === 'A') {
+            if (i.nodeName === 'SECTION') {
+            // if (i.nodeName === 'A') {
                 return true
             }
         })
@@ -46,8 +46,8 @@
     }
 
     let createSectionEl = function() {
-        // let s = document.createElement('section') //toutiao
-        let s = document.createElement('a') //yidian
+        let s = document.createElement('section') //toutiao
+        // let s = document.createElement('a') //yidian
         let ss = {
             display: 'block',
             height: '279px',
