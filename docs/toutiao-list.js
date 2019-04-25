@@ -98,12 +98,12 @@
                 wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
 
                 s.appendChild(wraper)
-                let touchNode = findTouchNode(e.path)
-                if (touchNode) {
-                    let targetNode = findAfterEl(touchNode)
-                    let parentNode = targetNode.parentNode
-                    parentNode.insertBefore(s, parentNode.children[0])
-                }
+                // let touchNode = findTouchNode(e.path)
+                // if (touchNode) {
+                //     let targetNode = findAfterEl(touchNode)
+                //     let parentNode = targetNode.parentNode
+                // }
+                parentNode.insertBefore(s, parentNode.children[0])
                 window.localStorage.removeItem('terms')
             }
             // document.addEventListener('touchstart', (e) => {
