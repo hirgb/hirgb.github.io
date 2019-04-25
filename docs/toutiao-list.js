@@ -113,18 +113,20 @@
             // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '#', 'this is a test card'))
 
 
-            let nodeY = window.localStorage.getItem('nodeY')
-            let inserted = false
-            if (nodeY) {
+            let nodeText = window.localStorage.getItem('nodeText')
+            // let inserted = false
+            if (nodeText) {
                 let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
-                nodeY = parseInt(nodeY) / ratio / 3
-                y = 0
+                // nodeY = parseInt(nodeY) / ratio / 3
+                // y = 0
                 sections.forEach(i => {
-                    let h = window.getComputedStyle(i).height
-                    h = parseInt(h)
-                    console.log(h);
-                    y += h
-                    if (y > nodeY && !inserted) {
+                    // let h = window.getComputedStyle(i).height
+                    // h = parseInt(h)
+                    // console.log(h);
+                    // y += h
+
+                    if (i.innerText === nodeText) {
+                    // if (y > nodeY && !inserted) {
                         let terms = window.localStorage.getItem('terms')
                         if (terms && JSON.parse(terms).length) {
                             // if (true) {
@@ -142,15 +144,15 @@
 
                             s.appendChild(wraper)
                             i.parentNode.insertBefore(s, i)
-                            inserted = !inserted
+                            // inserted = !inserted
                             // let parentNode = document.querySelector('#pageletListContent > div.list_content')
                             // parentNode.insertBefore(s, parentNode.children[4])
                             // window.localStorage.removeItem('terms')
                         }
                     }
                 })
-                inserted = false
-                window.localStorage.removeItem('nodeY')
+                // inserted = false
+                window.localStorage.removeItem('nodeText')
             }
 
             document.addEventListener('click', (e) => {
@@ -166,7 +168,10 @@
                 //         index = idx
                 //     }
                 // })
-                window.localStorage.setItem('nodeY', e.pageY)
+                // console.log(e.target);
+                // alert(e.target.parentNode.parentNode.parentNode.innerText)
+                // window.localStorage.setItem('nodeY', e.pageY)
+                window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText)
 
             })
     }, 500)
