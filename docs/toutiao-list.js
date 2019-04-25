@@ -1,4 +1,4 @@
-(function(){
+(function() {
     // let e = document.createElement('div')
     // e.style.height = '100px'
     //
@@ -18,15 +18,33 @@
     //
     // document.querySelector('#pageletListContent > div.list_content > section:nth-child(1)').append(e)
 
-    let findAfterEl = function(el, num = 4){
+    let stopDefault = function(e) {
+        if (e && e.preventDefault) {
+            e.preventDefault()
+        } else {
+            window.event.returnValue = false;
+        }
+        return false;
+    }
+
+    let findTouchNode = function(path) {
+        let result = path.find(i => {
+            if (i.nodeName === 'SECTION') {
+                return true
+            }
+        })
+        return result
+    }
+
+    let findAfterEl = function(el, num = 4) {
         let result = el
-        for(let i = 0; i<num; i++){
+        for (let i = 0; i < num; i++) {
             result = result.nextSibling
         }
         return result
     }
 
-    let createSectionEl = function(){
+    let createSectionEl = function() {
         let s = document.createElement('section')
         let ss = {
             height: '279px',
@@ -39,7 +57,7 @@
         return s
     }
 
-    let createWraperEl = function(){
+    let createWraperEl = function() {
         let wraper = document.createElement('div')
         Object.assign(wraper.style, {
             height: '100%',
@@ -48,7 +66,7 @@
         return wraper
     }
 
-    let createCardEl = function(){
+    let createCardEl = function() {
         let card = document.createElement('div')
         Object.assign(card.style, {
             height: '100%',
@@ -69,11 +87,20 @@
 
     wraper.appendChild(card)
     wraper.appendChild(card.cloneNode(true))
+    wraper.appendChild(card.cloneNode(true))
+    wraper.appendChild(card.cloneNode(true))
+
+    document.addEventListener('touchstart', (e) => {
+        if (window.localStorage.getItem('terms')) {
+            let touchNode = findTouchNode(e.path)
+            if (touchNode) {
+                let targetNode = findAfterEl(touchNode)
+                let parentNode = targetNode.parentNode
+                parentNode.insertBefore(s, targetNode)
+            }
+            window.localStorage.removeItem('terms')
+        }
+    })
 
 
-
-    let touchNode = document.querySelector('#pageletListContent > div.list_content > section:nth-child(1)')
-    let targetNode = findAfterEl(touchNode)
-    let parentNode = targetNode.parentNode
-    parentNode.insertBefore(s, targetNode)
 }())
