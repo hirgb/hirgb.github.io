@@ -127,6 +127,7 @@
                 s.appendChild(wraper)
                 let parentNode = document.querySelector('#pageletListContent > div.list_content')
                 parentNode.insertBefore(s, parentNode.children[0])
+                window.alert('loaded')
                 window.localStorage.removeItem('terms')
             }
     }, 500)
