@@ -18,17 +18,3 @@
 
     document.querySelector('#pageletListContent > div.list_content > section:nth-child(1)').append(e)
 }())
-
-
-
-
-
-// let startTime, endTime
-// document.addEventListener('mousedown', ()=>{
-//     startTime = new Date().getTime()
-// })
-//
-// document.addEventListener('mouseup', ()=>{
-//     endTime = new Date().getTime()
-//     console.log(startTime, endTime)
-// })
