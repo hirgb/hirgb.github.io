@@ -85,11 +85,11 @@
             <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%;" />
             <div style="float: left; width: 75%; height: 100%">
                 <div style="height: 80px; font-size: 48px; line-height: 80px; color: #fff; padding: 0 20px; white-space: nowrap; text-overflow: ellipsis;">${title}</div>
-                <p style="height: calc(100% - 160px); font-size: 40px; line-height: 50px; color: #ffffffbb; padding: 0 20px; text-overflow: ellipsis; overflow: hidden">${intro}</p>
-                <div style="height: 80px; font-size: 40px; line-height: 80px; color: #ffffffbb; padding: 0 20px; white-space: nowrap; text-align: right">查看详情>></div>
+                <p style="height: calc(100% - 80px); font-size: 40px; line-height: 50px; color: #ffffffbb; padding: 0 20px; text-overflow: ellipsis; overflow: hidden">${intro}</p>
             </div>
         </a>
         `
+        // <div style="height: 80px; font-size: 40px; line-height: 80px; color: #ffffffbb; padding: 0 20px; white-space: nowrap; text-align: right">查看详情>></div>
         return card
     }
 
