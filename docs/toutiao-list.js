@@ -130,7 +130,7 @@
 
                     s.appendChild(wraper)
                     let parentNode = document.querySelector('#pageletListContent > div.list_content')
-                    parentNode.insertBefore(s, parentNode.children[8])
+                    parentNode.insertBefore(s, parentNode.lastChild.previousSbiling)
                     // i.parentNode.insertBefore(s, i.nextSbiling)
                     // console.log(nodeText);
                     // inserted = !inserted
