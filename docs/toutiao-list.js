@@ -87,7 +87,7 @@
                 let wraper = createWraperEl()
 
                 let terms = window.localStorage.getItem('terms')
-                if (terms && terms.length) {
+                if (terms && JSON.parse(terms).length) {
                     let card = JSON.parse(terms)
                     let cardCount = card.length
                     wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
@@ -95,12 +95,15 @@
                         let card = createCardEl(i.pic, i.title, i.url, i.summary)
                         wraper.appendChild(card)
                     })
+
+                    wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
+
                     s.appendChild(wraper)
                     let touchNode = findTouchNode(e.path)
                     if (touchNode) {
                         let targetNode = findAfterEl(touchNode)
                         let parentNode = targetNode.parentNode
-                        parentNode.insertBefore(s, targetNode)
+                        parentNode.insertBefore(s, parentNode.children[0])
                     }
                     window.localStorage.removeItem('terms')
                 }
