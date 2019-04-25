@@ -16,6 +16,31 @@
             return false;
         }
 
+        let timeFormat = function(fmt, flag, timestamp) {
+            var t = timestamp ? new Date(timestamp) : new Date();
+            if (typeof(flag) == 'number') {
+                t.setTime(t.getTime() + (flag * 24 * 60 * 60 * 1000));
+            }
+            var o = {
+                "M+": t.getMonth() + 1, //月份
+                "d+": t.getDate(), //日
+                "h+": t.getHours(), //小时
+                "m+": t.getMinutes(), //分
+                "s+": t.getSeconds(), //秒
+                "q+": Math.floor((t.getMonth() + 3) / 3), //季度
+                "S": t.getMilliseconds() //毫秒
+            };
+            if (/(y+)/.test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (t.getFullYear() + "").substr(4 - RegExp.$1.length));
+            }
+            for (var k in o) {
+                if (new RegExp("(" + k + ")").test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+
         let findTouchNode = function(path) {
             let result = path.find(i => {
                 if (i.nodeName === 'SECTION') {
@@ -78,7 +103,6 @@
                 </div>
                 </a>
                 `
-                // <div style="height: 80px; font-size: 40px; line-height: 80px; color: #ffffffbb; padding: 0 20px; white-space: nowrap; text-align: right">查看详情>></div>
                 return card
             }
 
@@ -120,13 +144,13 @@
                     let wraper = createWraperEl()
                     let card = JSON.parse(terms)
                     let cardCount = card.length
-                    wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
+                    wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
+                    wraper.appendChild(createCardEl('', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
                     card.forEach(i => {
                         let card = createCardEl(i.pic, i.title, i.url, i.summary)
                         wraper.appendChild(card)
                     })
 
-                    // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
 
                     s.appendChild(wraper)
                     let parentNode = document.querySelector('#pageletListContent > div.list_content')
@@ -178,5 +202,5 @@
                 window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText.slice(0, 10))
 
             })
-    }, 0)
+    }, 500)
 }())
