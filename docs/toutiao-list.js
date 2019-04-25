@@ -92,14 +92,7 @@
             let cardCount = card.length
             wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
             card.forEach(i => {
-                let intro = ''
-                if(i.descs.length){
-                    intro = i.descs[0].content
-                    // i.descs.forEach(i => {
-                    //     intro += i.content + '<br />'
-                    // })
-                }
-                let card = createCardEl(i.pic, i.title, i.url, intro)
+                let card = createCardEl(i.pic, i.title, i.url, i.summary)
                 wraper.appendChild(card)
             })
             s.appendChild(wraper)

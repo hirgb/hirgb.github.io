@@ -12,8 +12,10 @@
         return true
     }
 
-    let segment = function(query) {
-        window.fetch(`https://bridge.sanjiaoshou.net/web/term/segment`, {
+
+    let getCard = function(query) {
+        window.fetch(`https://bridge.sanjiaoshou.net/web/term/getcardcommon`,
+            {
                 body: JSON.stringify({query}), // must match 'Content-Type' header
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                 headers: {
@@ -23,100 +25,44 @@
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, cors, *same-origin
                 referrer: 'no-referrer', // *client, no-referrer
-            }).then(function(response) {
-                response.json().then((data) => {
-                    if (data.code) {
-                        let terms = data.data
-                        if (terms.length) {
-                            let nluTerms = []
-                            terms.forEach(i => {
-                                if (i.token.length > 3 || ['PERSON_NAME', 'BOOK', 'TV', 'FILM'].includes(i.ner)) {
-                                    nluTerms.push({
-                                        word: i.token,
-                                        ner: i.ner,
-                                        offset: '0',
-                                    })
-                                }
-                            })
-                            getCard(nluTerms)
-
-                            // batch
-
-                            // terms.forEach((i, index) => {
-                            //     if (index === 0) {
-                            //         getCard(i.token, i.ner, true)
-                            //     } else {
-                            //         getCard(i.token, i.ner)
-                            //     }
-                            // })
+            }
+        ).then(function(response) {
+            response.json().then((res) => {
+                if (!res) {
+                    return
+                }
+                terms = res.data.data.result_list[0].term_list
+                terms.forEach((i, index) => {
+                    let term
+                    if (i.ner === 'FILM' && i.film_list) {
+                        term = {
+                            title: i.film_list[0].name,
+                            url: i.film_list[0].url,
+                            pic: i.film_list[0].posturl,
+                            ner: i.ner,
+                            inter: i.film_list[0].summary,
                         }
-                    } else {
-                        console.log('there is no segment');
+                        if (index === 0) {
+                            let terms = [term]
+                            window.localStorage.setItem('terms', JSON.stringify(terms))
+                        } else {
+                            let terms = window.localStorage.getItem('terms')
+                            if (terms) {
+                                terms = JSON.parse(terms)
+                                exist = terms.some(i => i.title === term.title)
+                                if (!exist) {
+                                    terms.push(term)
+                                    window.localStorage.setItem('terms', JSON.stringify(terms))
+                                }
+                            } else {
+                                let terms = [term]
+                                window.localStorage.setItem('terms', JSON.stringify(terms))
+                            }
+                        }
                     }
                 })
             })
-            .then(function(myJson) {
-                console.log(myJson);
-            })
-    }
-
-    // let getCard = function(word, ner, reset = false) {
-    //     if (word.length > 3 || ['PERSON_NAME', 'BOOK', 'TV', 'FILM'].includes(ner)){
-    //         window.fetch(`https://bridge.sanjiaoshou.net/web/term/getcardcommon?word=${word}&ner=${ner}`)
-    //         .then(function(response) {
-    //             response.json().then((res) => {
-    //                 if (!res) {
-    //                     // console.log(data.data);
-    //                     return
-    //                 }
-    //                 console.log(res.data);
-    //                 let item = {
-    //                     title: res.data.result_list[0].custom_info_list[0].data.title.content,
-    //                     url: res.data.result_list[0].custom_info_list[0].data.urls[0].h5Url,
-    //                     pic: res.data.result_list[0].custom_info_list[0].data.pics[0].url,
-    //                     ner: res.data.result_list[0].custom_info_list[0].ref.ner,
-    //                     descs: res.data.result_list[0].custom_info_list[0].data.descs,
-    //                 }
-    //                 if (reset) {
-    //                     let terms = [item]
-    //                     window.localStorage.setItem('terms', JSON.stringify(terms))
-    //                 } else {
-    //                     let terms = window.localStorage.getItem('terms')
-    //                     if (terms) {
-    //                         terms = JSON.parse(terms)
-    //                         exist = terms.some(i => i.title === item.title)
-    //                         if (!exist) {
-    //                             terms.push(item)
-    //                             window.localStorage.setItem('terms', JSON.stringify(terms))
-    //                         }
-    //                     } else {
-    //                         let terms = [item]
-    //                         window.localStorage.setItem('terms', JSON.stringify(terms))
-    //                     }
-    //                 }
-    //             })
-    //         })
-    //     }
-    // }
-    let getCard = function(nluTerms) {
-        window.fetch(`https://bridge.sanjiaoshou.net/web/term/getcardcommon`, {
-            body: JSON.stringify({nluTerms}), // must match 'Content-Type' header
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            headers: {
-                'user-agent': 'Mozilla/4.0 MDN Example',
-                'content-type': 'application/json'
-            },
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, cors, *same-origin
-            referrer: 'no-referrer', // *client, no-referrer
-        }).then(function(response) {
-                response.json().then((data) => {
-                    console.log(data);
-                })
-            })
-            .then(function(myJson) {
-                console.log(myJson);
-            })
+        })
     }
 
     if (!checkLocalStorage()) {
@@ -128,5 +74,5 @@
 
     let content = document.querySelector('#article_content').innerText
     // let content = document.querySelector('#imedia-article').innerText
-    segment(content)
+    getCard(content.replace(/\n/g, ''))
 }())
