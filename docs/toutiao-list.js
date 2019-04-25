@@ -82,54 +82,54 @@
                 return card
             }
 
-            document.addEventListener('touchstart', (e) => {
-                let s = createSectionEl()
-                let wraper = createWraperEl()
-
-                let terms = window.localStorage.getItem('terms')
-                // if (terms && JSON.parse(terms).length) {
-                if (true) {
-                    // let card = JSON.parse(terms)
-                    // let cardCount = card.length
-                    // wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
-                    // card.forEach(i => {
-                    //     let card = createCardEl(i.pic, i.title, i.url, i.summary)
-                    //     wraper.appendChild(card)
-                    // })
-
-                    wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
-
-                    s.appendChild(wraper)
-                    let touchNode = findTouchNode(e.path)
-                    if (touchNode) {
-                        let targetNode = findAfterEl(touchNode)
-                        let parentNode = targetNode.parentNode
-                        parentNode.insertBefore(s, targetNode)
-                    }
-                    // window.localStorage.removeItem('terms')
-                }
-            })
-
-            // let s = createSectionEl()
-            // let wraper = createWraperEl()
+            // document.addEventListener('touchstart', (e) => {
+            //     let s = createSectionEl()
+            //     let wraper = createWraperEl()
             //
+            //     let terms = window.localStorage.getItem('terms')
+            //     // if (terms && JSON.parse(terms).length) {
+            //     if (true) {
+            //         // let card = JSON.parse(terms)
+            //         // let cardCount = card.length
+            //         // wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
+            //         // card.forEach(i => {
+            //         //     let card = createCardEl(i.pic, i.title, i.url, i.summary)
+            //         //     wraper.appendChild(card)
+            //         // })
+            //
+            //         wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
+            //
+            //         s.appendChild(wraper)
+            //         let touchNode = findTouchNode(e.path)
+            //         if (touchNode) {
+            //             let targetNode = findAfterEl(touchNode)
+            //             let parentNode = targetNode.parentNode
+            //             parentNode.insertBefore(s, targetNode)
+            //         }
+            //         // window.localStorage.removeItem('terms')
+            //     }
+            // })
+
+            let s = createSectionEl()
+            let wraper = createWraperEl()
+
             // let terms = window.localStorage.getItem('terms')
             // if (terms && JSON.parse(terms).length) {
-            //     let card = JSON.parse(terms)
-            //     let cardCount = card.length
-            //     wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
-            //     card.forEach(i => {
-            //         let card = createCardEl(i.pic, i.title, i.url, i.summary)
-            //         wraper.appendChild(card)
-            //     })
-            //
-            //     wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
-            //
-            //     s.appendChild(wraper)
-            //     let parentNode = document.querySelector('#pageletListContent > div.list_content')
-            //     parentNode.insertBefore(s, parentNode.children[0])
-            //     window.alert('loaded')
-            //     window.localStorage.removeItem('terms')
-            // }
+            if (true) {
+                // let card = JSON.parse(terms)
+                // let cardCount = card.length
+                // wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
+                // card.forEach(i => {
+                //     let card = createCardEl(i.pic, i.title, i.url, i.summary)
+                //     wraper.appendChild(card)
+                // })
+
+                wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
+
+                s.appendChild(wraper)
+                let parentNode = document.querySelector('#pageletListContent > div.list_content')
+                parentNode.insertBefore(s, parentNode.children[0])
+                // window.localStorage.removeItem('terms')
+            }
     }, 500)
 }())
