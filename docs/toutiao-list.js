@@ -110,11 +110,9 @@
             //     }
             // })
             //
-            let s = createSectionEl()
-            let wraper = createWraperEl()
-            wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '#', 'this is a test card'))
+            // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '#', 'this is a test card'))
 
-            s.appendChild(wraper)
+
             let nodeY = window.localStorage.getItem('nodeY')
             if (nodeY) {
                 let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
@@ -129,6 +127,8 @@
                         let terms = window.localStorage.getItem('terms')
                         if (terms && JSON.parse(terms).length) {
                             // if (true) {
+                            let s = createSectionEl()
+                            let wraper = createWraperEl()
                             let card = JSON.parse(terms)
                             let cardCount = card.length
                             wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
