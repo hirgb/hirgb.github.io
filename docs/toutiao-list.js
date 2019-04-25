@@ -118,7 +118,7 @@
             let nodeY = window.localStorage.getItem('nodeY')
             if (nodeY) {
                 let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
-                nodeY = parseInt(nodeY)
+                nodeY = parseInt(nodeY) / ratio
                 y = 0
                 sections.forEach(i => {
                     let h = window.getComputedStyle(i).height
