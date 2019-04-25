@@ -27,18 +27,18 @@
             }
         ).then(function(response) {
             response.json().then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
 
                 var data123;
                 data123 = JSON.parse(res.data + '');
-                console.log(data123);
+                // console.log(data123);
                 if (data123.rtnCode === '1') { //failed
                     window.localStorage.removeItem('terms')
                     return
                 }
                 terms = data123.data.result_list[0].term_list
                 customInfoList = data123.data.result_list[0].custom_info_list
-                return
+                // return
                 // terms = [...terms, ...customInfoList]
                 terms.concat(customInfoList)
                 terms.forEach((i, index) => {
