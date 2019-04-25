@@ -69,7 +69,7 @@
         return wraper
     }
 
-    let createCardEl = function(imgSrc, title, url) {
+    let createCardEl = function(imgSrc, title, url, intro) {
         let card = document.createElement('div')
         Object.assign(card.style, {
             height: '100%',
@@ -84,7 +84,8 @@
         <a style="display: block; width: 100%; height: 100%" href="${url}">
             <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%;" />
             <div style="float: left; width: 75%; height: 100%">
-                <div style="font-size: 48px; line-height: 80px; color: #fff; padding: 0 20px; white-space: nowrap; text-overflow: ellipsis;">${title}</div>
+                <div style="height: 80px; font-size: 48px; line-height: 80px; color: #fff; padding: 0 20px; white-space: nowrap; text-overflow: ellipsis;">${title}</div>
+                <p style="height: calc(100% - 80px); font-size: 32px; line-height: 40px; color: #ffffff90; padding: 0 20px; text-overflow: ellipsis;">${intro}</p>
             </div>
         </a>
         `
@@ -101,7 +102,13 @@
             let cardCount = card.length
             wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
             card.forEach(i => {
-                let card = createCardEl(i.pic, i.title, i.url)
+                let intro = ''
+                if(i.descs.length){
+                    i.descs.forEach(i => {
+                        intro += i.content + '<br />'
+                    })
+                }
+                let card = createCardEl(i.pic, i.title, i.url, intro)
                 wraper.appendChild(card)
             })
             s.appendChild(wraper)

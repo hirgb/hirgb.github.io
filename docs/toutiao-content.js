@@ -66,6 +66,7 @@
                         url: res.data.result_list[0].custom_info_list[0].data.urls[0].h5Url,
                         pic: res.data.result_list[0].custom_info_list[0].data.pics[0].url,
                         ner: res.data.result_list[0].custom_info_list[0].ref.ner,
+                        descs: res.data.result_list[0].custom_info_list[0].data.descs,
                     }
                     if (reset) {
                         let terms = [item]
