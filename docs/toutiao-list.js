@@ -66,7 +66,7 @@
         return wraper
     }
 
-    let createCardEl = function() {
+    let createCardEl = function(imgSrc, title, url) {
         let card = document.createElement('div')
         Object.assign(card.style, {
             height: '100%',
@@ -76,14 +76,15 @@
             float: 'left',
             marginRight: '20px'
         })
+        card.innerHtml = `
+        <a style="display: block; width: 100%; height: 100%" href="${url}">
+            <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%" />
+            <div style="float: left; width: 75%; height: 100%">
+                <div style="font-size: 40px; line-height: 80px; color: #fff;">${title}</div>
+            </div>
+        </a>
+        `
         return card
-    }
-
-    let createImg = function(src){
-        let img = document.createElement('img')
-        img.src = src
-        img.width = '300px'
-        return img
     }
 
     document.addEventListener('touchstart', (e) => {
@@ -96,9 +97,7 @@
             let cardCount = card.length
             wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
             card.forEach(i => {
-                let img = createImg(i.pic)
-                let card = createCardEl()
-                card.appendChild(img)
+                let card = createCardEl(i.pic, i.title, i.url)
                 wraper.appendChild(card)
             })
             s.appendChild(wraper)
