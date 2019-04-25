@@ -1,5 +1,5 @@
 (function() {
-    window.setTimeout(function()=>{
+    window.setTimeout(function(){
         let href = window.location.href
         if (href.indexOf(`https://m.toutiao.com/i`) === 0) {
             return
