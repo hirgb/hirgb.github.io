@@ -29,7 +29,8 @@
 
     let findTouchNode = function(path) {
         let result = path.find(i => {
-            if (i.nodeName === 'SECTION') {
+            // if (i.nodeName === 'SECTION') {
+            if (i.nodeName === 'A') {
                 return true
             }
         })
@@ -45,8 +46,10 @@
     }
 
     let createSectionEl = function() {
-        let s = document.createElement('section')
+        // let s = document.createElement('section') //toutiao
+        let s = document.createElement('a') //yidian
         let ss = {
+            display: 'block',
             height: '279px',
             width: '100%',
             padding: '10px 0',
@@ -74,13 +77,14 @@
             borderRadius: '12px',
             background: 'linear-gradient(45deg, #0288d1 0%, #26c6da 100%)',
             float: 'left',
-            marginRight: '20px'
+            marginRight: '20px',
+            overflow: 'hidden',
         })
         card.innerHTML = `
         <a style="display: block; width: 100%; height: 100%" href="${url}">
-            <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%" />
+            <img src="${imgSrc}" style="display: block; float: left; width: 25%; height: 100%;" />
             <div style="float: left; width: 75%; height: 100%">
-                <div style="font-size: 40px; line-height: 80px; color: #fff;">${title}</div>
+                <div style="font-size: 48px; line-height: 80px; color: #fff; padding: 0 20px; white-space: nowrap; text-overflow: ellipsis;">${title}</div>
             </div>
         </a>
         `
