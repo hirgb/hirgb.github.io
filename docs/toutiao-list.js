@@ -149,6 +149,7 @@
                         }
                     }
                 })
+                inserted = false
                 window.localStorage.removeItem('nodeY')
             }
 
