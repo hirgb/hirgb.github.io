@@ -114,6 +114,7 @@
 
 
             let nodeY = window.localStorage.getItem('nodeY')
+            let inserted = false
             if (nodeY) {
                 let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
                 nodeY = parseInt(nodeY) / ratio / 3
@@ -123,7 +124,7 @@
                     h = parseInt(h)
                     console.log(h);
                     y += h
-                    if (y > nodeY) {
+                    if (y > nodeY && !inserted) {
                         let terms = window.localStorage.getItem('terms')
                         if (terms && JSON.parse(terms).length) {
                             // if (true) {
@@ -141,6 +142,7 @@
 
                             s.appendChild(wraper)
                             i.parentNode.insertBefore(s, i)
+                            inserted = !inserted
                             // let parentNode = document.querySelector('#pageletListContent > div.list_content')
                             // parentNode.insertBefore(s, parentNode.children[4])
                             // window.localStorage.removeItem('terms')
