@@ -112,48 +112,52 @@
             //
             // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '#', 'this is a test card'))
 
+            if (true) {
+                let terms = window.localStorage.getItem('terms')
+                if (terms && JSON.parse(terms).length) {
+                    // if (true) {
+                    let s = createSectionEl()
+                    let wraper = createWraperEl()
+                    let card = JSON.parse(terms)
+                    let cardCount = card.length
+                    wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
+                    card.forEach(i => {
+                        let card = createCardEl(i.pic, i.title, i.url, i.summary)
+                        wraper.appendChild(card)
+                    })
 
-            let nodeText = window.localStorage.getItem('nodeText')
-            // let inserted = false
-            if (nodeText) {
-                let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
-                // nodeY = parseInt(nodeY) / ratio / 3
-                // y = 0
-                sections.forEach(i => {
-                    // let h = window.getComputedStyle(i).height
-                    // h = parseInt(h)
-                    // console.log(h);
-                    // y += h
+                    // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
 
-                    if (i.innerText === nodeText) {
-                    // if (y > nodeY && !inserted) {
-                        let terms = window.localStorage.getItem('terms')
-                        if (terms && JSON.parse(terms).length) {
-                            // if (true) {
-                            let s = createSectionEl()
-                            let wraper = createWraperEl()
-                            let card = JSON.parse(terms)
-                            let cardCount = card.length
-                            wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
-                            card.forEach(i => {
-                                let card = createCardEl(i.pic, i.title, i.url, i.summary)
-                                wraper.appendChild(card)
-                            })
-
-                            // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
-
-                            s.appendChild(wraper)
-                            i.parentNode.insertBefore(s, i)
-                            // inserted = !inserted
-                            // let parentNode = document.querySelector('#pageletListContent > div.list_content')
-                            // parentNode.insertBefore(s, parentNode.children[4])
-                            // window.localStorage.removeItem('terms')
-                        }
-                    }
-                })
-                // inserted = false
-                window.localStorage.removeItem('nodeText')
+                    s.appendChild(wraper)
+                    let parentNode = document.querySelector('#pageletListContent > div.list_content')
+                    parentNode.insertBefore(s, parentNode.children[8])
+                    // i.parentNode.insertBefore(s, i.nextSbiling)
+                    // console.log(nodeText);
+                    // inserted = !inserted
+                    // let parentNode = document.querySelector('#pageletListContent > div.list_content')
+                    // parentNode.insertBefore(s, parentNode.children[4])
+                    // window.localStorage.removeItem('terms')
+                }
             }
+
+            // let nodeText = window.localStorage.getItem('nodeText')
+            // // let inserted = false
+            // if (nodeText) {
+            //     let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
+            //     // nodeY = parseInt(nodeY) / ratio / 3
+            //     // y = 0
+            //     sections.forEach(i => {
+            //         // let h = window.getComputedStyle(i).height
+            //         // h = parseInt(h)
+            //         // console.log(h);
+            //         // y += h
+            //
+            //         // if (i.innerText.startsWith(nodeText)) {
+            //
+            //     })
+            //     // inserted = false
+            // }
+            window.localStorage.removeItem('nodeText')
 
             document.addEventListener('click', (e) => {
                 // e.preventDefault()
@@ -171,7 +175,7 @@
                 // console.log(e.target);
                 // alert(e.target.parentNode.parentNode.parentNode.innerText)
                 // window.localStorage.setItem('nodeY', e.pageY)
-                window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText)
+                window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText.slice(0, 10))
 
             })
     }, 500)
