@@ -26,7 +26,7 @@
                 return result
             }
 
-            let findAfterEl = function(el, num = 4) {
+            let findAfterEl = function(el, num = 1) {
                 let result = el
                 for (let i = 0; i < num; i++) {
                     result = result.nextSibling
