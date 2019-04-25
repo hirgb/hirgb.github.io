@@ -112,27 +112,39 @@
             //
             let s = createSectionEl()
             let wraper = createWraperEl()
-            wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
+            wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '#', 'this is a test card'))
 
             s.appendChild(wraper)
-            let parentNode = document.querySelector('#pageletListContent > div.list_content')
-            let nodeIndex = window.localStorage.getItem('nodeIndex')
-            if (nodeIndex) {
-                nodeIndex = parseInt(nodeIndex)
-                parentNode.insertBefore(s, parentNode.children[nodeIndex])
-                window.localStorage.removeItem('nodeIndex')
-            }
-
-            document.addEventListener('touchstart', (e) => {
-                let touchNode = findTouchNode(e.path)
-                let parentNode = targetNode.parentNode
-                let index = 0
-                parentNode.children.forEach((i, idx) => {
-                    if (i === touchNode) {
-                        index = idx
+            let nodeY = window.localStorage.getItem('nodeY')
+            if (nodeY) {
+                let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
+                nodeY = parseInt(nodeY)
+                y = 0
+                sections.forEach(i => {
+                    let h = window.getComputedStyle(i).height
+                    h = parseInt(h)
+                    y += h
+                    if (y > nodeY) {
+                        i.parentNode.insertBefore(s, i)
                     }
                 })
-                window.localStorage.setItem('nodeIndex', index)
+                window.localStorage.removeItem('nodeY')
+            }
+
+            document.addEventListener('click', (e) => {
+                // e.preventDefault()
+                // console.log(e.pageY);
+                // console.log(e.pageY);
+                // let y = e.pageY
+                // let touchNode = findTouchNode(e.path)
+                // let parentNode = targetNode.parentNode
+                // let index = 4
+                // parentNode.children.forEach((i, idx) => {
+                //     if (i === touchNode) {
+                //         index = idx
+                //     }
+                // })
+                window.localStorage.setItem('nodeY', e.pageY)
                 // let terms = window.localStorage.getItem('terms')
                 // if (terms && JSON.parse(terms).length) {
                     if (true) {
