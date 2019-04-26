@@ -106,101 +106,27 @@
                 return card
             }
 
-            // document.addEventListener('touchstart', (e) => {
-            //     let s = createSectionEl()
-            //     let wraper = createWraperEl()
-            //
-            //     let terms = window.localStorage.getItem('terms')
-            //     // if (terms && JSON.parse(terms).length) {
-            //     if (true) {
-            //         // let card = JSON.parse(terms)
-            //         // let cardCount = card.length
-            //         // wraper.style.width = `calc(${cardCount*70}vw + ${cardCount * 20}px)`
-            //         // card.forEach(i => {
-            //         //     let card = createCardEl(i.pic, i.title, i.url, i.summary)
-            //         //     wraper.appendChild(card)
-            //         // })
-            //
-            //         wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '', 'this is a test card'))
-            //
-            //         s.appendChild(wraper)
-            //         let touchNode = findTouchNode(e.path)
-            //         if (touchNode) {
-            //             let targetNode = findAfterEl(touchNode)
-            //             let parentNode = targetNode.parentNode
-            //             parentNode.insertBefore(s, targetNode)
-            //         }
-            //         // window.localStorage.removeItem('terms')
-            //     }
-            // })
-            //
-            // wraper.appendChild(createCardEl('http://hirgb.com', '1234567', '#', 'this is a test card'))
 
-            if (true) {
+            let s = createSectionEl()
+            let wraper = createWraperEl()
 
-                let s = createSectionEl()
-                let wraper = createWraperEl()
+            wraper.appendChild(createCardEl('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556249331623&di=44cfd3814c2256afa7c47fbbc18f8de7&imgtype=0&src=http%3A%2F%2Fpic.duowan.com%2Fwebgame%2F1112%2F187277630090%2F187277630102.jpg', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
 
-                wraper.appendChild(createCardEl('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556249331623&di=44cfd3814c2256afa7c47fbbc18f8de7&imgtype=0&src=http%3A%2F%2Fpic.duowan.com%2Fwebgame%2F1112%2F187277630090%2F187277630102.jpg', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
-                // let card = createCardEl('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556249331623&di=44cfd3814c2256afa7c47fbbc18f8de7&imgtype=0&src=http%3A%2F%2Fpic.duowan.com%2Fwebgame%2F1112%2F187277630090%2F187277630102.jpg', '1234567', '#', 'this is a test card')
-                // wraper.appendChild(card)
-                // s.appendChild(wraper)
+            let terms = window.localStorage.getItem('terms')
+            if (terms && JSON.parse(terms).length) {
+                let cards = JSON.parse(terms)
+                let cardCount = cards.length
+                wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
+                cards.forEach(i => {
+                    let card = createCardEl(i.pic, i.title, i.url, i.summary)
+                    wraper.appendChild(card)
+                })
 
-                let terms = window.localStorage.getItem('terms')
-                if (terms && JSON.parse(terms).length) {
-                    let cards = JSON.parse(terms)
-                    let cardCount = cards.length
-                    wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
-                    cards.forEach(i => {
-                        let card = createCardEl(i.pic, i.title, i.url, i.summary)
-                        wraper.appendChild(card)
-                    })
-
-                }
-                s.appendChild(wraper)
-                window.localStorage.removeItem('terms')
-                let parentNode = document.querySelector('#pageletListContent > div.list_content')
-                // parentNode.insertBefore(s, parentNode.children[3])
-                parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
             }
+            s.appendChild(wraper)
+            window.localStorage.removeItem('terms')
+            let parentNode = document.querySelector('#pageletListContent > div.list_content')
+            parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
 
-            // let nodeText = window.localStorage.getItem('nodeText')
-            // // let inserted = false
-            // if (nodeText) {
-            //     let sections = document.querySelectorAll('#pageletListContent > div.list_content > section')
-            //     // nodeY = parseInt(nodeY) / ratio / 3
-            //     // y = 0
-            //     sections.forEach(i => {
-            //         // let h = window.getComputedStyle(i).height
-            //         // h = parseInt(h)
-            //         // console.log(h);
-            //         // y += h
-            //
-            //         // if (i.innerText.startsWith(nodeText)) {
-            //
-            //     })
-            //     // inserted = false
-            // }
-            // window.localStorage.removeItem('nodeText')
-
-            // document.addEventListener('click', (e) => {
-            //     e.preventDefault()
-            //     console.log(e.pageY);
-            //     console.log(e.pageY);
-            //     let y = e.pageY
-            //     let touchNode = findTouchNode(e.path)
-            //     let parentNode = targetNode.parentNode
-            //     let index = 4
-            //     parentNode.children.forEach((i, idx) => {
-            //         if (i === touchNode) {
-            //             index = idx
-            //         }
-            //     })
-            //     console.log(e.target);
-            //     alert(e.target.parentNode.parentNode.parentNode.innerText)
-            //     window.localStorage.setItem('nodeY', e.pageY)
-            //     window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText.slice(0, 10))
-            //
-            // })
     }, 500)
 }())
