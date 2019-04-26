@@ -143,24 +143,19 @@
 
                 wraper.appendChild(createCardEl('', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
 
-                let terms = window.localStorage.getItem('terms')
-                if (terms && JSON.parse(terms).length) {
-                    let cards = JSON.parse(terms)
-                    let cardCount = cards.length
-                    wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
-                    cards.forEach(i => {
-                        let card = createCardEl(i.pic, i.title, i.url, i.summary)
-                        wraper.appendChild(card)
-                    })
-
-                    s.appendChild(wraper)
-                    // i.parentNode.insertBefore(s, i.nextSbiling)
-                    // console.log(nodeText);
-                    // inserted = !inserted
-                    // let parentNode = document.querySelector('#pageletListContent > div.list_content')
-                    // parentNode.insertBefore(s, parentNode.children[4])
-                    window.localStorage.removeItem('terms')
-                }
+                // let terms = window.localStorage.getItem('terms')
+                // if (terms && JSON.parse(terms).length) {
+                //     let cards = JSON.parse(terms)
+                //     let cardCount = cards.length
+                //     wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
+                //     cards.forEach(i => {
+                //         let card = createCardEl(i.pic, i.title, i.url, i.summary)
+                //         wraper.appendChild(card)
+                //     })
+                //
+                //     s.appendChild(wraper)
+                //     window.localStorage.removeItem('terms')
+                // }
                 let parentNode = document.querySelector('#pageletListContent > div.list_content')
                 parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
             }
@@ -184,24 +179,24 @@
             // }
             // window.localStorage.removeItem('nodeText')
 
-            document.addEventListener('click', (e) => {
-                // e.preventDefault()
-                // console.log(e.pageY);
-                // console.log(e.pageY);
-                // let y = e.pageY
-                // let touchNode = findTouchNode(e.path)
-                // let parentNode = targetNode.parentNode
-                // let index = 4
-                // parentNode.children.forEach((i, idx) => {
-                //     if (i === touchNode) {
-                //         index = idx
-                //     }
-                // })
-                // console.log(e.target);
-                // alert(e.target.parentNode.parentNode.parentNode.innerText)
-                // window.localStorage.setItem('nodeY', e.pageY)
-                window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText.slice(0, 10))
-
-            })
+            // document.addEventListener('click', (e) => {
+            //     e.preventDefault()
+            //     console.log(e.pageY);
+            //     console.log(e.pageY);
+            //     let y = e.pageY
+            //     let touchNode = findTouchNode(e.path)
+            //     let parentNode = targetNode.parentNode
+            //     let index = 4
+            //     parentNode.children.forEach((i, idx) => {
+            //         if (i === touchNode) {
+            //             index = idx
+            //         }
+            //     })
+            //     console.log(e.target);
+            //     alert(e.target.parentNode.parentNode.parentNode.innerText)
+            //     window.localStorage.setItem('nodeY', e.pageY)
+            //     window.localStorage.setItem('nodeText', e.target.parentNode.parentNode.parentNode.innerText.slice(0, 10))
+            //
+            // })
     }, 500)
 }())
