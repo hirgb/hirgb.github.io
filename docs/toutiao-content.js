@@ -27,11 +27,7 @@
             }
         ).then(function(response) {
             response.json().then((res) => {
-                // console.log(res.data);
-
-                var data123;
-                data123 = JSON.parse(res.data + '');
-                // console.log(data123);
+                let data123 = res.data
                 if (data123.rtnCode === '1') { //failed
                     window.localStorage.removeItem('terms')
                     return
