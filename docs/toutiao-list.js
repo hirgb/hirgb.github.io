@@ -154,15 +154,15 @@
                     })
 
                     s.appendChild(wraper)
-                    let parentNode = document.querySelector('#pageletListContent > div.list_content')
-                    parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
                     // i.parentNode.insertBefore(s, i.nextSbiling)
                     // console.log(nodeText);
                     // inserted = !inserted
                     // let parentNode = document.querySelector('#pageletListContent > div.list_content')
                     // parentNode.insertBefore(s, parentNode.children[4])
-                    // window.localStorage.removeItem('terms')
+                    window.localStorage.removeItem('terms')
                 }
+                let parentNode = document.querySelector('#pageletListContent > div.list_content')
+                parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
             }
 
             // let nodeText = window.localStorage.getItem('nodeText')
@@ -182,7 +182,7 @@
             //     })
             //     // inserted = false
             // }
-            window.localStorage.removeItem('nodeText')
+            // window.localStorage.removeItem('nodeText')
 
             document.addEventListener('click', (e) => {
                 // e.preventDefault()
