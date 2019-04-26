@@ -125,8 +125,14 @@
             s.appendChild(wraper)
             window.localStorage.removeItem('terms')
             window.localStorage.removeItem('runtime')
+            window.localStorage.removeItem('pageIn')
             let parentNode = document.querySelector('#pageletListContent > div.list_content')
             parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
+
+            document.addEventListener('click', function(e){
+                let pageIn = timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime())
+                window.localStorage.setItem('pageIn', pageIn)
+            })
 
     }, 500)
 }())

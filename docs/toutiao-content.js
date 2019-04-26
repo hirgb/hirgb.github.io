@@ -115,7 +115,8 @@
                     }
                 })
                 let endTime = timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime())
-                window.localStorage.setItem('runtime', `开始加载时间：${startTime}，结束加载时间：${endTime}。共加载${total}条。`)
+                let pageIn = window.localStorage.getItem('pageIn')
+                window.localStorage.setItem('runtime', `进入：${pageIn}，开始：${startTime}，结束：${endTime}。共加载${total}条。`)
             })
         })
     }
