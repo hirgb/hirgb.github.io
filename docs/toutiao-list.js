@@ -141,7 +141,8 @@
                 let s = createSectionEl()
                 let wraper = createWraperEl()
 
-                wraper.appendChild(createCardEl('', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
+                // wraper.appendChild(createCardEl('', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
+                wraper.appendChild(createCardEl('http://trio.ai', '1234567', '#', 'this is a test card'))
 
                 // let terms = window.localStorage.getItem('terms')
                 // if (terms && JSON.parse(terms).length) {
