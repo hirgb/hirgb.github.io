@@ -106,11 +106,8 @@
                 return card
             }
 
-
             let s = createSectionEl()
             let wraper = createWraperEl()
-
-            wraper.appendChild(createCardEl('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556249331623&di=44cfd3814c2256afa7c47fbbc18f8de7&imgtype=0&src=http%3A%2F%2Fpic.duowan.com%2Fwebgame%2F1112%2F187277630090%2F187277630102.jpg', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
 
             let terms = window.localStorage.getItem('terms')
             if (terms && JSON.parse(terms).length) {
@@ -123,6 +120,7 @@
                 })
 
             }
+            wraper.appendChild(createCardEl('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556249331623&di=44cfd3814c2256afa7c47fbbc18f8de7&imgtype=0&src=http%3A%2F%2Fpic.duowan.com%2Fwebgame%2F1112%2F187277630090%2F187277630102.jpg', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
             s.appendChild(wraper)
             window.localStorage.removeItem('terms')
             let parentNode = document.querySelector('#pageletListContent > div.list_content')
