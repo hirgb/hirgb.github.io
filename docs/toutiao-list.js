@@ -142,23 +142,26 @@
                 let wraper = createWraperEl()
 
                 // wraper.appendChild(createCardEl('', timeFormat("yyyy-MM-dd hh:mm:ss", 0, new Date().getTime()), '#', 'this is a test card'))
-                wraper.appendChild(createCardEl('http://trio.ai', '1234567', '#', 'this is a test card'))
+                let card = createCardEl('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556249331623&di=44cfd3814c2256afa7c47fbbc18f8de7&imgtype=0&src=http%3A%2F%2Fpic.duowan.com%2Fwebgame%2F1112%2F187277630090%2F187277630102.jpg', '1234567', '#', 'this is a test card')
+                wraper.appendChild(card)
+                s.appendChild(wraper)
 
-                // let terms = window.localStorage.getItem('terms')
-                // if (terms && JSON.parse(terms).length) {
-                //     let cards = JSON.parse(terms)
-                //     let cardCount = cards.length
-                //     wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
-                //     cards.forEach(i => {
-                //         let card = createCardEl(i.pic, i.title, i.url, i.summary)
-                //         wraper.appendChild(card)
-                //     })
-                //
-                //     s.appendChild(wraper)
-                //     window.localStorage.removeItem('terms')
-                // }
+                let terms = window.localStorage.getItem('terms')
+                if (terms && JSON.parse(terms).length) {
+                    let cards = JSON.parse(terms)
+                    let cardCount = cards.length
+                    wraper.style.width = `calc(${cardCount*70 + 70}vw + ${cardCount * 20}px)`
+                    cards.forEach(i => {
+                        let card = createCardEl(i.pic, i.title, i.url, i.summary)
+                        wraper.appendChild(card)
+                    })
+
+                }
+                s.appendChild(wraper)
+                window.localStorage.removeItem('terms')
                 let parentNode = document.querySelector('#pageletListContent > div.list_content')
-                parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
+                parentNode.insertBefore(s, parentNode.children[3])
+                // parentNode.insertBefore(s, parentNode.lastChild.previousSibling.previousSibling.previousSibling)
             }
 
             // let nodeText = window.localStorage.getItem('nodeText')
