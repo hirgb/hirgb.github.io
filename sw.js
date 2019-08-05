@@ -2,11 +2,11 @@ const version = '1.0'
 const cacheName = 'hirgb-cache'
 
 this.addEventListener('install', (e)=>{
-    console.log('install success');
+    // console.log('install success');
 })
 
 this.addEventListener('activate', (e)=>{
-    console.log('activate');
+    // console.log('activate');
 })
 
 this.addEventListener('fetch', (e)=>{
@@ -15,10 +15,10 @@ this.addEventListener('fetch', (e)=>{
             return cache.match(e.request.url)
         }).then((response)=>{
             if (response) {
-                console.log(`cache: ${e.request.url}`);
+                // console.log(`cache: ${e.request.url}`);
                 return response
             }
-            console.log(`net: ${e.request.url}`);
+            // console.log(`net: ${e.request.url}`);
             return fetch(e.request)
         })
     )
