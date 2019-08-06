@@ -44,4 +44,4 @@
 > 在应用商店中可以安装web应用，安装后的web应用将出现在应用面板中。在应用面板中，你可以对应用排序和删除。
 
 ## Contributors
-![](https://hirgb.com/docs/contributors.svg)
+[![](https://hirgb.com/docs/contributors.svg)](https://hirgb.com/docs/contributors.svg)
