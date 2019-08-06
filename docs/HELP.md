@@ -1,3 +1,6 @@
+# HIRGB.COM
+![](https://img.shields.io/badge/version-v1.0.0-green)![](https://img.shields.io/badge/author-zhangkefei-blue)
+
 # 帮助
 
 >探索web极限，收集优雅、炫酷、好用的web应用。
@@ -29,6 +32,7 @@
 ## web应用
 
 > 如果你是开发者，恰好又想分享自己的web应用作品，可以用以下格式向hirgb.com@gmail.com提交。
+> 同时可附上您的github地址，您的链接将会出现在下方
 
 - title: 'example'
 - name: 'example'   // 英文
@@ -38,3 +42,6 @@
 ## web应用商店
 
 > 在应用商店中可以安装web应用，安装后的web应用将出现在应用面板中。在应用面板中，你可以对应用排序和删除。
+
+## Contributors
+![](https://hirgb.com/docs/contributors.svg)
