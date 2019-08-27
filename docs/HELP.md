@@ -38,10 +38,11 @@
 - name: 'example'   // 英文
 - icon: 128px * 128px
 - href: '应用url'
+- distribution: ''  // 描述
 
 ## web应用商店
 
-> 在应用商店中可以安装web应用，安装后的web应用将出现在应用面板中。在应用面板中，你可以对应用排序和删除。
+> 在应用商店中可以安装web应用，安装后的web应用将出现在应用面板中。在应用面板中，你可以对应用进行排序和删除操作。
 
 ## Contributors
 [![](https://hirgb.com/docs/contributors.svg)](https://hirgb.com/docs/contributors.svg)
