@@ -1,0 +1,80 @@
+{
+    "mouseover": [
+		{
+	        "selector": "#waifu #live2d",
+	        "text": ["干嘛呢你，快把手拿开～～", "鼠…鼠标放错地方了！", "你要干嘛呀？", "喵喵喵？", "怕怕(ノ≧∇≦)ノ", "非礼呀！救命！", "这样的话，只能使用武力了！", "我要生气了哦", "不要动手动脚的！"]
+	    },
+		{
+			"selector": ".input-wrap",
+			"text": ["要搜点什么呢？", "不要害羞啦，人家不会把你搜的东西往外说的，嘻嘻嘻..."]
+	    },
+		{
+			"selector": "#main > div.help > div > button:nth-child(1)",
+			"text": ["我家的宝藏都在这里"]
+	    },
+		{
+			"selector": "#main > div.help > div > button:nth-child(2)",
+			"text": ["通过设置，我可以更了解你"]
+	    },
+		{
+			"selector": "#main > div.help > div > a",
+			"text": ["你需要更多帮助吗？"]
+	    }
+	],
+    "seasons": [{
+        "date": "01/01",
+        "text": "<span style=\"color:#0099cc;\">元旦</span>了呢，新的一年又开始了，今年是{year}年～"
+    }, {
+        "date": "02/14",
+        "text": "又是一年<span style=\"color:#0099cc;\">情人节</span>，{year}年找到对象了嘛～"
+    }, {
+        "date": "03/08",
+        "text": "今天是<span style=\"color:#0099cc;\">妇女节</span>！"
+    }, {
+        "date": "03/12",
+        "text": "今天是<span style=\"color:#0099cc;\">植树节</span>，要保护环境呀！"
+    }, {
+        "date": "04/01",
+        "text": "悄悄告诉你一个秘密～<span style=\"background-color:#34495e;\">今天是愚人节，不要被骗了哦～</span>"
+    }, {
+        "date": "05/01",
+        "text": "今天是<span style=\"color:#0099cc;\">五一劳动节</span>，计划好假期去哪里了吗～"
+    }, {
+        "date": "06/01",
+        "text": "<span style=\"color:#0099cc;\">儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"
+    }, {
+        "date": "07/08",
+        "text": "<span style=\"color:#0099cc;\">2018</span> 年是多久之前来着……1，2，3……有好多好多天呢！我到主人家这么久啦"
+    }, {
+        "date": "08/17",
+        "text": "难道，是<span style=\"color:#0099cc;\">那位大人</span>降临的日子！"
+    }, {
+        "date": "09/03",
+        "text": "<span style=\"color:#0099cc;\">中国人民抗日战争胜利纪念日</span>，铭记历史、缅怀先烈、珍爱和平、开创未来。"
+    }, {
+        "date": "09/10",
+        "text": "<span style=\"color:#0099cc;\">教师节</span>，在学校要给老师问声好呀～"
+    }, {
+        "date": "10/01",
+        "text": "<span style=\"color:#0099cc;\">国庆节</span>到了，为祖国母亲庆生！"
+    }, {
+        "date": "11/05-11/12",
+        "text": "今年的<span style=\"color:#0099cc;\">双十一</span>是和谁一起过的呢～"
+    }, {
+        "date": "12/20-12/31",
+        "text": "这几天是<span style=\"color:#0099cc;\">圣诞节</span>，主人肯定又去剁手买买买了～"
+    }],
+    "click": [{
+        "selector": "#waifu #live2d",
+        "text": [
+            "点击页面右上角『帮助』可以获取更详细的使用帮助哦~",
+            "点击『设置』让我知道你更多的使用习惯吧！",
+            "如果不喜欢我，可以在『设置』把我关掉哦，呜呜呜呜~",
+            "我家所有的宝贝都应用商店里，去看看吧！",
+            "应用商店里的所有工具都是免费的呀",
+            "按下空格键，会有奇妙的事情发生。那是你的应用列表，哈哈哈...",
+            "如果你有炫酷的web应用，告诉我吧，我会让更多人看到哦。我家邮箱是hirgb.com@gmail.com",
+            "我还有很厉害的搜索功能哦，移动鼠标，找找看吧"
+        ]
+    }]
+}
