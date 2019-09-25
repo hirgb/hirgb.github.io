@@ -3,7 +3,7 @@
     "description": "web apps.",
     "display": "standalone",
     "icons": [{
-        "src": "/favicon.png",
+        "src": "favicon.png",
         "sizes": "128x128",
         "type": "image/png"
     }],
